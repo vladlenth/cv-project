@@ -1,12 +1,55 @@
-# React + Vite
+# 📄 CV Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Интерактивное веб-приложение для создания и редактирования резюме прямо в браузере.  
+Разработано с использованием **React**, **TypeScript** и **React Hook Form**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Демо
 
-## Expanding the ESLint configuration
+[🔗 Открыть демо](https://cv-project-qvqv.vercel.app/)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Возможности
+
+- 🖊 Редактирование полей резюме в реальном времени
+- 📄 Предпросмотр отправленных данных
+- 🛠 Валидация формы с помощью React Hook Form
+- 🎨 Адаптивный и минималистичный дизайн
+
+---
+
+## 🖼 Скриншоты
+
+| Редактирование формы          | Просмотр данных |
+| ----------------------------- | --------------- |
+| ![Form](screenshots/form.png) |
+
+---
+
+## 🛠 Технологии
+
+- **React 19**
+- **TypeScript**
+- **React Hook Form**
+- **Vite**
+- **Prettier + ESLint**
+
+---
+
+## 📦 Установка и запуск
+
+```bash
+# Клонировать репозиторий
+git clone https://github.com/vladlenth/cv-project.git
+
+# Перейти в папку проекта
+cd cv-project
+
+# Установить зависимости
+npm install
+
+# Запустить проект
+npm run dev
+```
