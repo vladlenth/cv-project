@@ -1,8 +1,10 @@
-import React from 'react';
-import '../styles/CVForm.css';
-import { FormInput } from './CVEditForm/FormInput';
+import { FC } from 'react';
 
-function CVForm() {
+import '../styles/CVForm.css';
+
+import { FormInput } from './forms/FormInput';
+
+const CVForm: FC = () => {
   return (
     <section className='edit-block'>
       <div className='edit-block_wrapper'>
@@ -10,6 +12,6 @@ function CVForm() {
       </div>
     </section>
   );
-}
+};
 
 export default CVForm;

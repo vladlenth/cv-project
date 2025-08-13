@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import '../styles/Header.css';
 
-export function Header() {
+export const Header: FC = () => {
   return (
     <header>
       <div>
@@ -8,4 +10,4 @@ export function Header() {
       </div>
     </header>
   );
-}
+};

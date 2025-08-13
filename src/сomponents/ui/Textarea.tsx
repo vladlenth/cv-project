@@ -1,6 +1,15 @@
-import React from 'react';
+import { FC, TextareaHTMLAttributes } from 'react';
 
-export default function Textarea({
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label?: string;
+  id: string;
+  rows?: number;
+  placeholder?: string;
+  inputClass?: string;
+  disabled?: boolean;
+}
+
+const Textarea: FC<TextareaProps> = ({
   label,
   id,
   rows = 3,
@@ -8,7 +17,7 @@ export default function Textarea({
   inputClass = '',
   disabled = false,
   ...registerField
-}) {
+}) => {
   return (
     <div className='form-group'>
       {label && <label htmlFor={id}>{label}</label>}
@@ -22,4 +31,6 @@ export default function Textarea({
       />
     </div>
   );
-}
+};
+
+export default Textarea;

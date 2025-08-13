@@ -1,6 +1,16 @@
-import React from 'react';
+import { FC, TextareaHTMLAttributes } from 'react';
 
-export default function Input({
+interface InputProps extends TextareaHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  id: string;
+  type: string;
+  placeholder?: string;
+  inputClass?: string;
+  disabled?: boolean;
+  required?: boolean;
+}
+
+const Input: FC<InputProps> = ({
   label,
   id,
   type = 'text',
@@ -9,7 +19,7 @@ export default function Input({
   disabled = false,
   required = false,
   ...registerField
-}) {
+}) => {
   return (
     <div className='form-group'>
       {label && <label htmlFor={id}>{label}</label>}
@@ -24,4 +34,6 @@ export default function Input({
       />
     </div>
   );
-}
+};
+
+export default Input;
