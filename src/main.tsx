@@ -8,7 +8,7 @@ import App from './App';
 const rootElement = document.getElementById('root') as HTMLElement;
 
 createRoot(rootElement).render(
-    <StrictMode>
-        <App />
-    </StrictMode>
+  <StrictMode>
+    <App />
+  </StrictMode>,
 );

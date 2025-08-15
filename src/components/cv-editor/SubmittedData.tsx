@@ -1,4 +1,5 @@
 import { FC } from 'react';
+
 import { FormData } from '../../data/cvFormFields';
 
 interface SubmittedDataProps {
@@ -21,11 +22,11 @@ const SubmittedData: FC<SubmittedDataProps> = ({ data }) => {
   };
 
   return (
-    <div className='submitted-data'>
-      <h2 className='submitted-data__title'>Submitted Data:</h2>
-      <div className='submitted-data__group'>
+    <div className="submitted-data">
+      <h2 className="submitted-data__title">Submitted Data:</h2>
+      <div className="submitted-data__group">
         {Object.keys(labels).map((key) => (
-          <div className='submitted-data__field' key={key}>
+          <div className="submitted-data__field" key={key}>
             <label>{labels[key as keyof FormData]}</label>
             <p>{data[key as keyof FormData]}</p>
           </div>

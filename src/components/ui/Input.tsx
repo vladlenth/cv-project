@@ -1,6 +1,6 @@
-import { FC, TextareaHTMLAttributes } from 'react';
+import { FC, InputHTMLAttributes } from 'react';
 
-interface InputProps extends TextareaHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   id: string;
   type: string;
@@ -13,15 +13,15 @@ interface InputProps extends TextareaHTMLAttributes<HTMLInputElement> {
 const Input: FC<InputProps> = ({
   label,
   id,
-  type = 'text',
+  type,
   placeholder,
   inputClass = '',
   disabled = false,
   required = false,
-  ...registerField
+  ...rest
 }) => {
   return (
-    <div className='form-group'>
+    <div className="form-group">
       {label && <label htmlFor={id}>{label}</label>}
       <input
         id={id}
@@ -30,7 +30,7 @@ const Input: FC<InputProps> = ({
         className={inputClass}
         disabled={disabled}
         required={required}
-        {...registerField}
+        {...rest}
       />
     </div>
   );

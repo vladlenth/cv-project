@@ -80,6 +80,14 @@ em-emoji-picker {
   padding: 0 35px;
 }
 
+.submitted-data_content {
+  min-width: 300px;
+}
+
+.submitted-data_content-left {
+  min-width: 300px;
+  width: 600px;
+}
 .edit-block_step-heading {
   display: flex;
   flex-basis: 40%;
@@ -131,7 +139,6 @@ em-emoji-picker {
   flex-direction: column;
   gap: 15px;
   margin: 0 auto;
-  width: 600px;
 }
 
 .edit-block_form-entry {

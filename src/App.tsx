@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
-import { Header } from './сomponents/Header';
-import CVForm from './сomponents/CVForm';
+import { Header } from './components/Header';
+import CVForm from './components/CVForm';
 
 const App: FC = () => {
   return (

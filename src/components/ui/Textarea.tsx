@@ -1,6 +1,6 @@
 import { FC, TextareaHTMLAttributes } from 'react';
 
-interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   label?: string;
   id: string;
   rows?: number;
@@ -16,10 +16,10 @@ const Textarea: FC<TextareaProps> = ({
   placeholder,
   inputClass = '',
   disabled = false,
-  ...registerField
+  ...rest
 }) => {
   return (
-    <div className='form-group'>
+    <div className="form-group">
       {label && <label htmlFor={id}>{label}</label>}
       <textarea
         id={id}
@@ -27,7 +27,7 @@ const Textarea: FC<TextareaProps> = ({
         placeholder={placeholder}
         className={inputClass}
         disabled={disabled}
-        {...registerField}
+        {...rest}
       />
     </div>
   );

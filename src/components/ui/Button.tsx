@@ -5,12 +5,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   content: string;
 }
 
-export const Button: FC<ButtonProps> = ({
-  variant,
-  content,
-  className = '',
-  ...props
-}) => {
+export const Button: FC<ButtonProps> = ({ variant, content, className = '', ...props }) => {
   let styleClasses = className;
 
   if (variant === 'sec') {
@@ -18,7 +13,7 @@ export const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button type='button' className={styleClasses} {...props}>
+    <button type="button" className={styleClasses} {...props}>
       {content}
     </button>
   );
