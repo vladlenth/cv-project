@@ -9,7 +9,7 @@ import { Button } from '../ui/Button';
 
 import { cvFormFields, FormData } from '../../data/cvFormFields';
 
-export function FormInput(): React.JSX.Element {
+export function PersonalInfoForm(): React.JSX.Element {
   const {
     register,
     handleSubmit,
@@ -54,7 +54,7 @@ export function FormInput(): React.JSX.Element {
   return (
     <section className="edit-block">
       <div className="edit-block_wrapper">
-        <FormContainer extraClasses="form-container">
+        <FormContainer>
           <h2 className="submitted-data__title">Personal Information:</h2>
 
           {cvFormFields.map(
@@ -94,7 +94,7 @@ export function FormInput(): React.JSX.Element {
         </FormContainer>
 
         {sent && (
-          <FormContainer extraClasses="data-container">
+          <FormContainer>
             <SubmittedData data={formData} />
           </FormContainer>
         )}
