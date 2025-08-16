@@ -1,5 +1,5 @@
-import Input, { InputProps } from '../components/ui/Input';
-import Textarea, { TextareaProps } from '../components/ui/Textarea';
+import Input from '../components/ui/Input';
+import Textarea from '../components/ui/Textarea';
 
 import { PersonalInfoFormData } from './validationSchemas';
 
@@ -7,15 +7,17 @@ export type FormData = PersonalInfoFormData;
 
 type InputFieldConfig = {
   component: typeof Input;
-  type: 'text' | 'email' | 'tel';
-} & Omit<InputProps, 'name'> & {
+  type?: string;
+} & Omit<React.ComponentProps<typeof Input>, 'name'> & {
     name: keyof FormData;
+    tooltip?: string;
   };
 
 type TextareaFieldConfig = {
   component: typeof Textarea;
-} & Omit<TextareaProps, 'name'> & {
+} & Omit<React.ComponentProps<typeof Textarea>, 'name'> & {
     name: keyof FormData;
+    tooltip?: string;
   };
 
 export type FieldConfig = InputFieldConfig | TextareaFieldConfig;
@@ -27,7 +29,8 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvFirstName',
     type: 'text',
     placeholder: 'Francisco',
-    name: 'firstName',
+    name: 'firstName' as keyof FormData,
+    tooltip: 'Enter your name',
   },
   {
     component: Input,
@@ -35,7 +38,8 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvLastName',
     type: 'text',
     placeholder: 'Rabaneda Cuervo',
-    name: 'lastName',
+    name: 'lastName' as keyof FormData,
+    tooltip: 'Enter your last name',
   },
   {
     component: Input,
@@ -43,7 +47,8 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvProfession',
     type: 'text',
     placeholder: 'Fashion designer',
-    name: 'profession',
+    name: 'profession' as keyof FormData,
+    tooltip: 'Enter your profession',
   },
   {
     component: Input,
@@ -51,7 +56,8 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvAddress',
     type: 'text',
     placeholder: 'Pasaia, Spain',
-    name: 'address',
+    name: 'address' as keyof FormData,
+    tooltip: 'Enter your city and country',
   },
   {
     component: Input,
@@ -59,7 +65,8 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvEmail',
     type: 'email',
     placeholder: 'contact@rabanede.com',
-    name: 'email',
+    name: 'email' as keyof FormData,
+    tooltip: 'Enter your email',
   },
   {
     component: Input,
@@ -67,14 +74,16 @@ export const cvFormFields: FieldConfig[] = [
     id: 'cvPhoneNumber',
     type: 'tel',
     placeholder: '+1 (855) 657-2264',
-    name: 'phoneNumber',
+    name: 'phoneNumber' as keyof FormData,
+    tooltip: 'Enter your phonenumber',
   },
   {
     component: Textarea,
     label: 'Description (About me):',
     id: 'cvAboutMe',
     placeholder: 'More info.',
-    name: 'aboutMe',
     rows: 6,
+    name: 'aboutMe' as keyof FormData,
+    tooltip: 'Расскажите о себе',
   },
 ];

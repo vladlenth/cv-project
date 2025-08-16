@@ -6,6 +6,7 @@ import classNames from 'classnames';
 import FormContainer from './FormContainer';
 import SubmittedData from './SubmittedData';
 import { Button } from '../ui/Button';
+
 import { cvFormFields } from '../../data/cvFormFields';
 import { personalInfoSchema, PersonalInfoFormData } from '../../data/validationSchemas';
 
@@ -42,7 +43,7 @@ export const PersonalInfoForm = () => {
           <FormContainer>
             <h2 className="submitted-data__title">Personal Information:</h2>
 
-            {cvFormFields.map(({ component: Component, name, ...props }, index) => (
+            {cvFormFields.map(({ component: Component, name, tooltip, ...props }, index) => (
               <Component
                 key={props.id ?? `${name}-${index}`}
                 {...(props as any)}
@@ -50,6 +51,7 @@ export const PersonalInfoForm = () => {
                 inputClass={classNames({ 'input-error': errors[name as FieldName] })}
                 error={errors[name as FieldName]?.message}
                 {...register(name as FieldName)}
+                tooltip={tooltip}
               />
             ))}
 

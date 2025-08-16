@@ -21,14 +21,16 @@ const Textarea: FC<TextareaProps> = ({
   return (
     <div className="form-group">
       {label && <label htmlFor={id}>{label}</label>}
-      <textarea
-        id={id}
-        rows={rows}
-        placeholder={placeholder}
-        className={inputClass}
-        disabled={disabled}
-        {...rest}
-      />
+      <div className="textarea-wrapper" style={{ position: 'relative' }}>
+        <textarea
+          id={id}
+          rows={rows}
+          placeholder={placeholder}
+          className={inputClass}
+          disabled={disabled}
+          {...rest}
+        />
+      </div>
     </div>
   );
 };
