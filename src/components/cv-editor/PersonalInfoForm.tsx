@@ -10,13 +10,15 @@ import { Button } from '../ui/Button';
 import { cvFormFields } from '../../data/cvFormFields';
 import { personalInfoSchema, PersonalInfoFormData } from '../../data/validationSchemas';
 
+import Input, { InputProps } from '../ui/Input';
+import Textarea, { TextareaProps } from '../ui/Textarea';
+
 type FieldName = keyof PersonalInfoFormData;
 
 export const PersonalInfoForm = () => {
   const {
     register,
     handleSubmit,
-    reset,
     getValues,
     formState: { errors },
   } = useForm<PersonalInfoFormData>({
@@ -26,16 +28,6 @@ export const PersonalInfoForm = () => {
 
   const [isSent, setIsSent] = useState(false);
 
-  const onSubmit = (data: PersonalInfoFormData) => {
-    console.log('Submitted:', data);
-    setIsSent(true);
-  };
-
-  const handleEdit = () => {
-    reset(getValues());
-    setIsSent(false);
-  };
-
   return (
     <section className="edit-block">
       <div className="edit-block_wrapper">
@@ -43,22 +35,47 @@ export const PersonalInfoForm = () => {
           <FormContainer>
             <h2 className="submitted-data__title">Personal Information:</h2>
 
-            {cvFormFields.map(({ component: Component, name, tooltip, ...props }, index) => (
-              <Component
-                key={props.id ?? `${name}-${index}`}
-                {...(props as any)}
-                disabled={isSent}
-                inputClass={classNames({ 'input-error': errors[name as FieldName] })}
-                error={errors[name as FieldName]?.message}
-                {...register(name as FieldName)}
-                tooltip={tooltip}
-              />
-            ))}
+            {cvFormFields.map(({ component: Component, name, tooltip, ...props }, index) => {
+              if (Component === Input) {
+                return (
+                  <Input
+                    key={props.id ?? `${name}-${index}`}
+                    {...(props as InputProps)}
+                    disabled={isSent}
+                    inputClass={classNames({ 'input-error': errors[name as FieldName] })}
+                    {...register(name as FieldName)}
+                    tooltip={tooltip}
+                  />
+                );
+              }
+
+              if (Component === Textarea) {
+                return (
+                  <Textarea
+                    key={props.id ?? `${name}-${index}`}
+                    {...(props as TextareaProps)}
+                    disabled={isSent}
+                    inputClass={classNames({ 'input-error': errors[name as FieldName] })}
+                    {...register(name as FieldName)}
+                  />
+                );
+              }
+
+              return null;
+            })}
 
             {isSent ? (
-              <Button variant="sec" content="Edit" onClick={handleEdit} />
+              <Button variant="sec" content="Edit" onClick={() => setIsSent(false)} />
             ) : (
-              <Button variant="sec" content="Send" type="button" onClick={handleSubmit(onSubmit)} />
+              <Button
+                variant="sec"
+                content="Send"
+                type="button"
+                onClick={handleSubmit((data) => {
+                  console.log('Submitted:', data);
+                  setIsSent(true);
+                })}
+              />
             )}
           </FormContainer>
         </div>
