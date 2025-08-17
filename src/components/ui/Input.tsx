@@ -1,5 +1,4 @@
 import { FC, InputHTMLAttributes, useState } from 'react';
-import Tooltip from '../ui/ToolTip';
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

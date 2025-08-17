@@ -21,7 +21,7 @@ const Textarea: FC<TextareaProps> = ({
   return (
     <div className="form-group">
       {label && <label htmlFor={id}>{label}</label>}
-      <div className="textarea-wrapper" style={{ position: 'relative' }}>
+      <div className="textarea-wrapper">
         <textarea
           id={id}
           rows={rows}
