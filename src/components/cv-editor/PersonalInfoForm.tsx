@@ -1,32 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import classNames from 'classnames';
 
+import FormField from './FormField';
 import FormContainer from './FormContainer';
 import SubmittedData from './SubmittedData';
 import { Button } from '../ui/Button';
 
-import { cvFormFields } from '../../data/cvFormFields';
-import { personalInfoSchema, PersonalInfoFormData } from '../../data/validationSchemas';
-
-import Input, { InputProps } from '../ui/Input';
-import Textarea, { TextareaProps } from '../ui/Textarea';
-
-type FieldName = keyof PersonalInfoFormData;
+import { cvFormFields } from '../form-structure/cvFormFields';
+import { personalInfoSchema, PersonalInfoFormData } from '../form-structure/validationSchemas';
 
 export const PersonalInfoForm = () => {
+  const [isSent, setIsSent] = useState(false);
+
   const {
     register,
     handleSubmit,
     getValues,
     formState: { errors },
+    reset,
   } = useForm<PersonalInfoFormData>({
     mode: 'onChange',
     resolver: zodResolver(personalInfoSchema),
   });
 
-  const [isSent, setIsSent] = useState(false);
+  const onSubmit = useCallback((data: PersonalInfoFormData) => {
+    console.log('Submitted:', data);
+    setIsSent(true);
+  }, []);
+
+  const handleEditClick = useCallback(() => {
+    setIsSent(false);
+  }, []);
 
   return (
     <section className="edit-block">
@@ -35,48 +40,28 @@ export const PersonalInfoForm = () => {
           <FormContainer>
             <h2 className="submitted-data__title">Personal Information:</h2>
 
-            {cvFormFields.map(({ component: Component, name, tooltip, ...props }, index) => {
-              if (Component === Input) {
-                return (
-                  <Input
-                    key={props.id ?? `${name}-${index}`}
-                    {...(props as InputProps)}
-                    disabled={isSent}
-                    inputClass={classNames({ 'input-error': errors[name as FieldName] })}
-                    {...register(name as FieldName)}
-                    tooltip={tooltip}
-                  />
-                );
-              }
+            <form noValidate>
+              {cvFormFields.map((field) => (
+                <FormField
+                  key={field.props.id}
+                  field={field}
+                  register={register}
+                  errors={errors}
+                  disabled={isSent}
+                />
+              ))}
 
-              if (Component === Textarea) {
-                return (
-                  <Textarea
-                    key={props.id ?? `${name}-${index}`}
-                    {...(props as TextareaProps)}
-                    disabled={isSent}
-                    inputClass={classNames({ 'input-error': errors[name as FieldName] })}
-                    {...register(name as FieldName)}
-                  />
-                );
-              }
-
-              return null;
-            })}
-
-            {isSent ? (
-              <Button variant="sec" content="Edit" onClick={() => setIsSent(false)} />
-            ) : (
-              <Button
-                variant="sec"
-                content="Send"
-                type="button"
-                onClick={handleSubmit((data) => {
-                  console.log('Submitted:', data);
-                  setIsSent(true);
-                })}
-              />
-            )}
+              {isSent ? (
+                <Button variant="sec" content="Edit" type="button" onClick={handleEditClick} />
+              ) : (
+                <Button
+                  variant="sec"
+                  content="Send"
+                  type="button"
+                  onClick={handleSubmit(onSubmit)}
+                />
+              )}
+            </form>
           </FormContainer>
         </div>
 
