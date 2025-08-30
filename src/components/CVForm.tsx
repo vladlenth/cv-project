@@ -5,13 +5,11 @@ import '../styles/CVForm.css';
 import { PersonalInfoForm } from './cv-editor/PersonalInfoForm';
 
 const CVForm: FC = () => {
-  return (
-    <section>
-      <div className="edit-block_wrapper">
-        <PersonalInfoForm />
-      </div>
-    </section>
-  );
+	return (
+		<div>
+			<PersonalInfoForm />
+		</div>
+	);
 };
 
 export default CVForm;
