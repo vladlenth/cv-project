@@ -11,68 +11,63 @@ import { cvFormFields } from '../form-structure/cvFormFields';
 import { personalInfoSchema, PersonalInfoFormData } from '../form-structure/validationSchemas';
 
 export const PersonalInfoForm = () => {
-  const [isSent, setIsSent] = useState(false);
+	const [isSent, setIsSent] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    formState: { errors },
-    reset,
-  } = useForm<PersonalInfoFormData>({
-    mode: 'onChange',
-    resolver: zodResolver(personalInfoSchema),
-  });
+	const {
+		register,
+		handleSubmit,
+		getValues,
+		formState: { errors },
+	} = useForm<PersonalInfoFormData>({
+		mode: 'onChange',
+		resolver: zodResolver(personalInfoSchema),
+	});
 
-  const onSubmit = useCallback((data: PersonalInfoFormData) => {
-    console.log('Submitted:', data);
-    setIsSent(true);
-  }, []);
+	const toggleSent = useCallback(() => {
+		!isSent
+			? handleSubmit((data) => {
+					console.log('Submitted:', data);
+					setIsSent(true);
+				})()
+			: setIsSent(false);
+	}, [handleSubmit, isSent]);
 
-  const handleEditClick = useCallback(() => {
-    setIsSent(false);
-  }, []);
+	return (
+		<section className="edit-block">
+			<div className="edit-block_wrapper">
+				<div className="submitted-data_content-left">
+					<FormContainer>
+						<h2 className="submitted-data__title">Personal Information:</h2>
 
-  return (
-    <section className="edit-block">
-      <div className="edit-block_wrapper">
-        <div className="submitted-data_content-left">
-          <FormContainer>
-            <h2 className="submitted-data__title">Personal Information:</h2>
+						<form noValidate>
+							{cvFormFields.map((field) => (
+								<FormField
+									key={field.props.id}
+									field={field}
+									register={register}
+									errors={errors}
+									disabled={isSent}
+								/>
+							))}
 
-            <form noValidate>
-              {cvFormFields.map((field) => (
-                <FormField
-                  key={field.props.id}
-                  field={field}
-                  register={register}
-                  errors={errors}
-                  disabled={isSent}
-                />
-              ))}
+							<Button
+								variant="sec"
+								content={isSent ? 'Edit' : 'Send'}
+								type="button"
+								onClick={toggleSent}
+							/>
+						</form>
+					</FormContainer>
+				</div>
 
-              {isSent ? (
-                <Button variant="sec" content="Edit" type="button" onClick={handleEditClick} />
-              ) : (
-                <Button
-                  variant="sec"
-                  content="Send"
-                  type="button"
-                  onClick={handleSubmit(onSubmit)}
-                />
-              )}
-            </form>
-          </FormContainer>
-        </div>
-
-        {isSent && (
-          <FormContainer>
-            <div className="submitted-data_content">
-              <SubmittedData data={getValues()} />
-            </div>
-          </FormContainer>
-        )}
-      </div>
-    </section>
-  );
+				{isSent && (
+					<FormContainer>
+						<div>
+							<SubmittedData data={getValues()} />
+						</div>
+					</FormContainer>
+				)}
+			</div>
+		</section>
+	);
 };
