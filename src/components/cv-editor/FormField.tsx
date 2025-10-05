@@ -1,9 +1,10 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import classNames from 'classnames';
 
 import Input from '../ui/Input';
 import Textarea from '../ui/Textarea';
+import { FieldError } from './FieldError';
 import { FormData, FieldConfig } from '../form-structure/fieldFactory';
 
 const componentMap = {
@@ -28,8 +29,7 @@ const FormField = <T extends keyof FormData>({
 }: FormFieldProps<T>) => {
 	const { component, name, props, validation } = field;
 
-	const Component = componentMap[component] as React.ElementType;
-
+	const Component = componentMap[component];
 	const registerProps = register(name, validation);
 	const error = errors[name];
 
@@ -41,11 +41,7 @@ const FormField = <T extends keyof FormData>({
 				inputClass={classNames({ 'input-error': error })}
 				{...registerProps}
 			/>
-			{error && (
-				<p role="alert" className="error-message">
-					{error.message?.toString() || 'Invalid input'}
-				</p>
-			)}
+			<FieldError error={error} />
 		</div>
 	);
 };
