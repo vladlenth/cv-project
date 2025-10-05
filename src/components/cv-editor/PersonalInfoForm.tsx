@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -11,7 +11,7 @@ import { cvFormFields } from '../form-structure/cvFormFields';
 import { personalInfoSchema, PersonalInfoFormData } from '../form-structure/validationSchemas';
 
 export const PersonalInfoForm = () => {
-	const [isSent, setIsSent] = useState(false);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 
 	const {
 		register,
@@ -23,14 +23,14 @@ export const PersonalInfoForm = () => {
 		resolver: zodResolver(personalInfoSchema),
 	});
 
-	const toggleSent = useCallback(() => {
-		!isSent
-			? handleSubmit((data) => {
-					console.log('Submitted:', data);
-					setIsSent(true);
-				})()
-			: setIsSent(false);
-	}, [handleSubmit, isSent]);
+	const handleSend = handleSubmit((data) => {
+		console.log('Submitted:', data);
+		setIsSubmitted(true);
+	});
+
+	const handleEdit = () => {
+		setIsSubmitted(false);
+	};
 
 	return (
 		<section className="edit-block">
@@ -46,21 +46,21 @@ export const PersonalInfoForm = () => {
 									field={field}
 									register={register}
 									errors={errors}
-									disabled={isSent}
+									disabled={isSubmitted}
 								/>
 							))}
 
 							<Button
 								variant="sec"
-								content={isSent ? 'Edit' : 'Send'}
+								content={isSubmitted ? 'Edit' : 'Send'}
 								type="button"
-								onClick={toggleSent}
+								onClick={isSubmitted ? handleEdit : handleSend}
 							/>
 						</form>
 					</FormContainer>
 				</div>
 
-				{isSent && (
+				{isSubmitted && (
 					<FormContainer>
 						<div>
 							<SubmittedData data={getValues()} />
