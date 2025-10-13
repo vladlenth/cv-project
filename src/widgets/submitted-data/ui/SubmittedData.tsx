@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FormData } from '../form-structure/fieldFactory';
+import { FormData } from '../../../features/personal-info/lib/fieldFactory';
 
 interface SubmittedDataProps {
 	data: FormData | null;

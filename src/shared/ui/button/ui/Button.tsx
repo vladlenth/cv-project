@@ -18,3 +18,4 @@ export const Button: FC<ButtonProps> = ({ variant, content, className = '', ...p
 		</button>
 	);
 };
+export default Button;

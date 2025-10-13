@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import '../styles/CVForm.css';
 
-import { PersonalInfoForm } from './cv-editor/PersonalInfoForm';
+import { PersonalInfoForm } from '../../../features/personal-info/ui/PersonalInfoForm';
 
 const CVForm: FC = () => {
 	return (
