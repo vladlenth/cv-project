@@ -1,6 +1,6 @@
 import { ReactNode, FC } from 'react';
 
-export interface FormContainerProps {
+interface FormContainerProps {
 	children: ReactNode;
 }
 

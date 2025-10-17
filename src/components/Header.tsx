@@ -1,6 +1,8 @@
+import { FC } from 'react';
+
 import '../styles/Header.css';
 
-const CVForm = () => {
+export const Header: FC = () => {
 	return (
 		<header>
 			<div>
@@ -9,5 +11,3 @@ const CVForm = () => {
 		</header>
 	);
 };
-
-export default CVForm;

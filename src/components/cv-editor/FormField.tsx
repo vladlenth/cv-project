@@ -2,10 +2,10 @@ import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import classNames from 'classnames';
 
-import Input from '../../input/ui/Input';
-import Textarea from '../../textarea/ui/Textarea';
-import { FieldError } from '../../field-error/ui/FieldError';
-import { FormData, FieldConfig } from '../../../../features/personal-info/lib/fieldFactory';
+import Input from '../ui/Input';
+import Textarea from '../ui/Textarea';
+import { FieldError } from './FieldError';
+import { FormData, FieldConfig } from '../form-structure/fieldFactory';
 
 const componentMap = {
 	input: Input,
@@ -35,7 +35,12 @@ const FormField = <T extends keyof FormData>({
 
 	return (
 		<div className="form-field-wrapper">
-			<Component {...(props as any)} disabled={disabled} {...registerProps} />
+			<Component
+				{...(props as any)}
+				disabled={disabled}
+				inputClass={classNames({ 'input-error': error })}
+				{...registerProps}
+			/>
 			<FieldError error={error} />
 		</div>
 	);
