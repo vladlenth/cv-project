@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	required?: boolean;
 }
 
-const Input: FC<InputProps> = ({
+export const Input: FC<InputProps> = ({
 	label,
 	id,
 	type,

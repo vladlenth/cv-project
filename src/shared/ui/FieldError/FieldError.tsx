@@ -1,7 +1,7 @@
 import React from 'react';
 import { FieldError as ReactHookFormError } from 'react-hook-form';
 
-interface FieldErrorProps {
+export interface FieldErrorProps {
 	error?: ReactHookFormError;
 }
 

@@ -1,5 +1,5 @@
-import { InputProps } from '../ui/Input';
-import { TextareaProps } from '../ui/Textarea';
+import { InputProps } from '../../../../shared/ui/Input';
+import { TextareaProps } from '../../../../shared/ui/Textarea';
 import { PersonalInfoFormData } from './validationSchemas';
 
 export type FormData = PersonalInfoFormData;
@@ -28,25 +28,3 @@ export type FieldConfigTextarea<T extends keyof FormData = keyof FormData> = {
 export type FieldConfig<T extends keyof FormData = keyof FormData> =
 	| FieldConfigInput<T>
 	| FieldConfigTextarea<T>;
-
-export const createInputField = <T extends keyof FormData>(
-	name: T,
-	props: FieldConfigInput<T>['props'],
-	validation?: ValidationRules,
-): FieldConfigInput<T> => ({
-	component: 'input',
-	name,
-	props,
-	validation,
-});
-
-export const createTextareaField = <T extends keyof FormData>(
-	name: T,
-	props: FieldConfigTextarea<T>['props'],
-	validation?: ValidationRules,
-): FieldConfigTextarea<T> => ({
-	component: 'textarea',
-	name,
-	props,
-	validation,
-});

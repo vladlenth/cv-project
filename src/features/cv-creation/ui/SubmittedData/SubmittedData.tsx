@@ -1,11 +1,11 @@
 import { FC } from 'react';
-import { FormData } from '../form-structure/fieldFactory';
+import { FormData } from '../../model/form-structure/types';
 
-interface SubmittedDataProps {
+export interface SubmittedDataProps {
 	data: FormData | null;
 }
 
-const SubmittedData: FC<SubmittedDataProps> = ({ data }) => {
+export const SubmittedData: FC<SubmittedDataProps> = ({ data }) => {
 	if (!data) {
 		return <p>No data submitted.</p>;
 	}

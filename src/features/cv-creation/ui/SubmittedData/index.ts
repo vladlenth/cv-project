@@ -1,0 +1,1 @@
+export { SubmittedData } from './SubmittedData';

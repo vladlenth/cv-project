@@ -2,10 +2,10 @@ import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import classNames from 'classnames';
 
-import Input from '../ui/Input';
-import Textarea from '../ui/Textarea';
-import { FieldError } from './FieldError';
-import { FormData, FieldConfig } from '../form-structure/fieldFactory';
+import Input from '../../../../shared/ui/Input/Input';
+import Textarea from '../../../../shared/ui/Textarea/Textarea';
+import { FieldError } from '../../../../shared/ui/FieldError/FieldError';
+import { FormData, FieldConfig } from '@features/cv-creation/model/form-structure/types';
 
 const componentMap = {
 	input: Input,
@@ -14,14 +14,14 @@ const componentMap = {
 
 type ComponentKey = keyof typeof componentMap;
 
-interface FormFieldProps<T extends keyof FormData = keyof FormData> {
+export interface FormFieldProps<T extends keyof FormData = keyof FormData> {
 	field: Extract<FieldConfig<T>, { component: ComponentKey }>;
 	register: UseFormRegister<FormData>;
 	errors: FieldErrors<FormData>;
 	disabled?: boolean;
 }
 
-const FormField = <T extends keyof FormData>({
+export const FormField = <T extends keyof FormData>({
 	field,
 	register,
 	errors,

@@ -1,10 +1,10 @@
 import { ReactNode, FC } from 'react';
 
-interface FormContainerProps {
+export interface FormContainerProps {
 	children: ReactNode;
 }
 
-const FormContainer: FC<FormContainerProps> = ({ children }) => {
+export const FormContainer: FC<FormContainerProps> = ({ children }) => {
 	return <div className="edit-block_form">{children}</div>;
 };
 
