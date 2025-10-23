@@ -2,9 +2,9 @@ import React from 'react';
 import { FieldErrors, UseFormRegister } from 'react-hook-form';
 import classNames from 'classnames';
 
-import Input from '../../../../shared/ui/Input/Input';
-import Textarea from '../../../../shared/ui/Textarea/Textarea';
-import { FieldError } from '../../../../shared/ui/FieldError/FieldError';
+import Input from '@/shared/ui/Input/Input';
+import Textarea from '@shared/ui/Textarea/Textarea';
+import { FieldError } from '@shared/ui/FieldError/FieldError';
 import { FormData, FieldConfig } from '@features/cv-creation/model/form-structure/types';
 
 const componentMap = {

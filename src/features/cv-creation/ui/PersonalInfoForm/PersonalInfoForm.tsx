@@ -3,15 +3,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import FormField from '../FormField/FormField';
-import FormContainer from '../../../../shared/ui/FormContainer/FormContainer';
+import FormContainer from '@shared/ui/FormContainer/FormContainer';
 import SubmittedData from '../SubmittedData/SubmittedData';
-import { Button } from '../../../../shared/ui/Button/Button';
+import { Button } from '@shared/ui/Button/Button';
 
-import { cvFormFields } from '../../model/form-structure/cvFormFields';
-import {
-	personalInfoSchema,
-	PersonalInfoFormData,
-} from '../../model/form-structure/validationSchemas';
+import { cvFormFields } from '@model/form-structure/cvFormFields';
+import { personalInfoSchema, PersonalInfoFormData } from '@model/form-structure/validationSchemas';
 
 export const PersonalInfoForm = () => {
 	const [isSubmitted, setIsSubmitted] = useState(false);

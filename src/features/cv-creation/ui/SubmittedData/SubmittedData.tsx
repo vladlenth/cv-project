@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { FormData } from '../../model/form-structure/types';
+import { FormData } from '@model/form-structure/types';
 
 export interface SubmittedDataProps {
 	data: FormData | null;

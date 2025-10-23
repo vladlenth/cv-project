@@ -1,1 +1,1 @@
-export { CVCreatePage } from '../../../cv-create/ui/CVCreatePage/CVCreatePage';
+export { CVCreatePage } from '@pages/cv-create/ui/CVCreatePage/CVCreatePage';

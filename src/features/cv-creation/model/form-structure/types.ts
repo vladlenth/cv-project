@@ -1,5 +1,5 @@
-import { InputProps } from '../../../../shared/ui/Input';
-import { TextareaProps } from '../../../../shared/ui/Textarea';
+import { InputProps } from '@shared/ui/Input';
+import { TextareaProps } from '@shared/ui/Textarea';
 import { PersonalInfoFormData } from './validationSchemas';
 
 export type FormData = PersonalInfoFormData;

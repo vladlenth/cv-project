@@ -1,5 +1,5 @@
-import { InputProps } from '../../../../shared/ui/Input';
-import { TextareaProps } from '../../../../shared/ui/Textarea';
+import { InputProps } from '@shared/ui/Input';
+import { TextareaProps } from '@shared/ui/Textarea';
 import { FieldConfigInput, FieldConfigTextarea, ValidationRules, FormData } from './types';
 
 export const createInputField = <T extends keyof FormData>(

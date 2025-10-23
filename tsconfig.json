@@ -24,7 +24,9 @@
 			"@widgets/*": ["./src/widgets/*"],
 			"@features/*": ["./src/features/*"],
 			"@entities/*": ["./src/entities/*"],
-			"@shared/*": ["./src/shared/*"]
+			"@shared/*": ["./src/shared/*"],
+			"@model/*": ["./src/features/cv-creation/model/*"],
+			"@styles/*": ["./src/styles/*"]
 		}
 	},
 	"include": ["src"],

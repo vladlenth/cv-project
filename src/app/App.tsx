@@ -1,12 +1,12 @@
 import { FC } from 'react';
 
-import { ui } from '@widgets/header';
+import { Header } from '@widgets/header/ui/Header/Header';
 import { CVCreatePage } from '@pages/cv-create';
 
 const App: FC = () => {
 	return (
 		<>
-			<ui.Header />
+			<Header />
 			<CVCreatePage />
 		</>
 	);
